@@ -13,9 +13,7 @@ static const int smartgaps          = 0;        /* 1 means no outer gap when the
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 
-static const char *fonts[]          = {
-  "Inconsolata Nerd Font Mono:style=Regular:pixelsize=15:antialias=true:autohint=true",
-};
+static const char *fonts[]          = { "Inconsolata Nerd Font Mono:style=Regular:pixelsize=15:antialias=true:autohint=true" };
 
 static const char dmenufont[]       = "Inconsolata:size=13";
 
