@@ -10,7 +10,6 @@ static const int topbar             = 1;        /* 0 means bottom bar */
 
 static const char *fonts[]          = {
   "Inconsolata Nerd Font Mono:style=Regular:pixelsize=15:antialias=true:autohint=true",
-  "Font Awesome 5 Free:style=Regular:pixelsize=15:antialias=true:autohint=true",
 };
 
 static const char dmenufont[]       = "Inconsolata:size=13";
@@ -82,13 +81,13 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_Return,                 zoom,           {0} },
 	{ Mod1Mask,                     XK_Tab,                    view,           {0} },
 	{ MODKEY,                       XK_q,                      killclient,     {0} },
-	{ MODKEY,                       XK_t,                      setlayout,      {.v = &layouts[0]} },
-	{ MODKEY,                       XK_f,                      setlayout,      {.v = &layouts[1]} },
-	{ MODKEY,                       XK_m,                      setlayout,      {.v = &layouts[2]} },
+	{ MODKEY,                       XK_F5,                     setlayout,      {.v = &layouts[0]} }, /* tile    */
+	{ MODKEY,                       XK_F6,                     setlayout,      {.v = &layouts[1]} }, /* NULL    */
+	{ MODKEY,                       XK_F7,                     setlayout,      {.v = &layouts[2]} }, /* monocle */
 	{ MODKEY,                       XK_space,                  setlayout,      {0} },
 	{ MODKEY|ShiftMask,             XK_space,                  togglefloating, {0} },
 	{ MODKEY,                       XK_0,                      view,           {.ui = ~0 } },
-	{ MODKEY|ShiftMask,             XK_0,                      tag,            {.ui = ~0 } },
+	//{ MODKEY|ShiftMask,             XK_0,                      tag,            {.ui = ~0 } },
 	{ MODKEY,                       XK_comma,                  focusmon,       {.i = -1 } },
 	{ MODKEY,                       XK_period,                 focusmon,       {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_comma,                  tagmon,         {.i = -1 } },
@@ -109,9 +108,10 @@ static Key keys[] = {
 	{ MODKEY,		        XK_y,                      spawn,	   SHCMD("st -e neomutt") },
 	{ MODKEY,		        XK_g,                      spawn,	   SHCMD("st -e vifmrun") },
 	{ MODKEY,		        XK_n,                      spawn,	   SHCMD("st -e ncmpcpp") },
-	{ MODKEY,		        XK_e,                      spawn,	   SHCMD("st -f 'Inconsolata Nerd Font:style=Regular:pixelsize=18:antialias=true:autohint=true' -e calcurse") },
+	{ MODKEY,		        XK_v,                      spawn,	   SHCMD("st -f 'Inconsolata Nerd Font:style=Regular:pixelsize=18:antialias=true:autohint=true' -e calcurse") },
 	{ MODKEY,		        XK_c,                      spawn,	   SHCMD("st -e ssh -i ~/.ssh/homeserver_key felipe@homeserver -t tmux a -t weechat") },
 	{ MODKEY,		        XK_w,                      spawn,	   SHCMD("st -e nvim ~/Documents/notes/index.md") },
+	{ MODKEY|ShiftMask,		XK_w,                      spawn,	   SHCMD("st -e wiki-finder") },
 	{ MODKEY,		        XK_F1,                     spawn,	   SHCMD("sshfs-manager phone ~/Documents/remote-devices/phone /storage/emulated/0/ 'Phone SSHFS'") },
 	{ MODKEY,		        XK_F2,                     spawn,	   SHCMD("sshfs-manager homeserver ~/Documents/remote-devices/homeserver / 'Homeserver SSHFS'") },
 	{ MODKEY,		        XK_F3,                     spawn,	   SHCMD("sshfs-manager vps ~/Documents/remote-devices/vps /home/felipe 'VPS SSHFS'") },
