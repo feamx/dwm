@@ -96,7 +96,7 @@ static Key keys[] = {
 	{ ControlMask|Mod1Mask,         XK_l,                      shiftview,      {.i = +1 } },
 	{ ControlMask|Mod1Mask,         XK_h,                      shiftview,      {.i = -1 } },
 	{ 0,                            XK_Print,                  spawn,          SHCMD("import png:- | xclip -selection clipboard -t image/png") },
-	{ ShiftMask,                    XK_Print,                  spawn,          SHCMD("import ~/Images/Screenshots/$(date +%Y-%m-%d-%H:%M:%S).png") },
+	{ ShiftMask,                    XK_Print,                  spawn,          SHCMD("import ~/Images/screenshots/$(date +%Y-%m-%d-%H:%M:%S).png") },
 	{ ControlMask,                  XK_Print,                  spawn,          SHCMD("printupload") },
         { 0,                            XF86XK_AudioRaiseVolume,   spawn,          SHCMD("amixer set Master 5%+ | pkill -RTMIN+11 dwmblocks") },
 	{ 0,                            XF86XK_AudioLowerVolume,   spawn,	   SHCMD("amixer set Master 5%- | pkill -RTMIN+11 dwmblocks") },
