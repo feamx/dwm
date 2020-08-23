@@ -4,13 +4,14 @@ ___
 ![](https://i.imgur.com/wHjGKl3.png)
 ___
 
-### This fork has the following pacthed features:
+### This fork has the following changes:
 
 * Removed window title ([notitle](https://dwm.suckless.org/patches/notitle))
 * Fullscreen mode ([fullscreen](https://dwm.suckless.org/patches/fullscreen))
 * Prevents empty tags from being shown ([hide_vacant_tags](https://dwm.suckless.org/patches/hide_vacant_tags))
 * Keeps layouts per tag ([pertag](https://dwm.suckless.org/patches/pertag))
-* Had some code changed to work with my build of [dwmblocks](https://github.com/cfelipe/dwmblocks).
+* Mouse events handler ([dwm-statuscmd](https://dwm.suckless.org/patches/statuscmd) and [dwm-statuscmd-signal](https://dwm.suckless.org/patches/statuscmd))
+* Had some other code changes to work better with my build of [dwmblocks](https://github.com/cfelipe/dwmblocks).
 
 ### Requirements
 
