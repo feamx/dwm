@@ -4,11 +4,6 @@
 /* appearance */
 static const unsigned int borderpx  = 2;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
-static const unsigned int gappih    = 20;       /* horiz inner gap between windows */
-static const unsigned int gappiv    = 20;       /* vert inner gap between windows */
-static const unsigned int gappoh    = 10;       /* horiz outer gap between windows and screen edge */
-static const unsigned int gappov    = 10;       /* vert outer gap between windows and screen edge */
-static const int smartgaps          = 0;        /* 1 means no outer gap when there is only one window */
 
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
@@ -84,22 +79,6 @@ static Key keys[] = {
 	{ MODKEY,                       XK_h,                      setmfact,       {.f = -0.05} },
 	{ MODKEY,                       XK_l,                      setmfact,       {.f = +0.05} },
 	{ MODKEY,                       XK_f,                      fullscreen,     {0} },
-	{ MODKEY|Mod1Mask,              XK_h,                      incrgaps,       {.i = +1 } },
-	{ MODKEY|Mod1Mask,              XK_l,                      incrgaps,       {.i = -1 } },
-	{ MODKEY|Mod1Mask|ShiftMask,    XK_h,                      incrogaps,      {.i = +1 } },
-	{ MODKEY|Mod1Mask|ShiftMask,    XK_l,                      incrogaps,      {.i = -1 } },
-	{ MODKEY|Mod1Mask|ControlMask,  XK_h,                      incrigaps,      {.i = +1 } },
-	{ MODKEY|Mod1Mask|ControlMask,  XK_l,                      incrigaps,      {.i = -1 } },
-	{ MODKEY|Mod1Mask,              XK_0,                      togglegaps,     {0} },
-	//{ MODKEY|Mod1Mask|ShiftMask,    XK_0,                      defaultgaps,    {0} },
-	{ MODKEY|ControlMask|Mod1Mask,  XK_y,                      incrihgaps,     {.i = +1 } },
-	{ MODKEY|ControlMask|Mod1Mask,  XK_o,                      incrihgaps,     {.i = -1 } },
-	{ MODKEY|ControlMask,           XK_y,                      incrivgaps,     {.i = +1 } },
-	{ MODKEY|ControlMask,           XK_o,                      incrivgaps,     {.i = -1 } },
-	{ MODKEY|Mod1Mask,              XK_y,                      incrohgaps,     {.i = +1 } },
-	{ MODKEY|Mod1Mask,              XK_o,                      incrohgaps,     {.i = -1 } },
-	{ MODKEY|ShiftMask,             XK_y,                      incrovgaps,     {.i = +1 } },
-	{ MODKEY|ShiftMask,             XK_o,                      incrovgaps,     {.i = -1 } },
 	{ MODKEY|ShiftMask,             XK_Return,                 zoom,           {0} },
 	{ Mod1Mask,                     XK_Tab,                    view,           {0} },
 	{ MODKEY,                       XK_q,                      killclient,     {0} },
@@ -117,29 +96,31 @@ static Key keys[] = {
 	{ ControlMask|Mod1Mask,         XK_l,                      shiftview,      {.i = +1 } },
 	{ ControlMask|Mod1Mask,         XK_h,                      shiftview,      {.i = -1 } },
 	{ 0,                            XK_Print,                  spawn,          SHCMD("import png:- | xclip -selection clipboard -t image/png") },
-	{ ShiftMask,                    XK_Print,                  spawn,          SHCMD("import ~/Images/Screenshots/$(date +%Y-%m-%d-%H:%M:%S).png") },
+	{ ShiftMask,                    XK_Print,                  spawn,          SHCMD("import ~/Images/screenshots/$(date +%Y-%m-%d-%H:%M:%S).png") },
 	{ ControlMask,                  XK_Print,                  spawn,          SHCMD("printupload") },
-        { 0,                            XF86XK_AudioRaiseVolume,   spawn,          SHCMD("amixer set Master 5%+ | pkill -RTMIN+11 dwmblocks") },
-	{ 0,                            XF86XK_AudioLowerVolume,   spawn,	   SHCMD("amixer set Master 5%- | pkill -RTMIN+11 dwmblocks") },
-	{ 0,                            XF86XK_AudioMute,	   spawn,          SHCMD("amixer set Master toggle | pkill -RTMIN+11 dwmblocks") },
+  { 0,                            XF86XK_AudioRaiseVolume,   spawn,          SHCMD("volume raise | pkill -RTMIN+11 dwmblocks") },
+	{ 0,                            XF86XK_AudioLowerVolume,   spawn,	         SHCMD("volume lower | pkill -RTMIN+11 dwmblocks") },
+	{ 0,                            XF86XK_AudioMute,	        spawn,           SHCMD("volume mute  | pkill -RTMIN+11 dwmblocks") },
 	{ 0,                            XF86XK_AudioPrev,          spawn,          SHCMD("mpc prev | pkill -RTMIN+10 dwmblocks") },
 	{ 0,                            XF86XK_AudioNext,          spawn,          SHCMD("mpc next | pkill -RTMIN+10 dwmblocks") },
 	{ 0,                            XF86XK_AudioStop,          spawn,          SHCMD("mpc stop | pkill -RTMIN+10 dwmblocks") },
 	{ 0,                            XF86XK_AudioPlay,          spawn,          SHCMD("mpc toggle | pkill -RTMIN+10 dwmblocks") },
-	{ MODKEY,		        XK_u,                      spawn,	   SHCMD("emojilist") },
-	{ MODKEY,		        XK_y,                      spawn,	   SHCMD("st -e neomutt") },
-	{ MODKEY,		        XK_g,                      spawn,	   SHCMD("st -e vifmrun") },
-	{ MODKEY,		        XK_n,                      spawn,	   SHCMD("st -e ncmpcpp") },
-	{ MODKEY,		        XK_v,                      spawn,	   SHCMD("st -f 'Inconsolata Nerd Font:style=Regular:pixelsize=18:antialias=true:autohint=true' -e calcurse") },
-	{ MODKEY,		        XK_c,                      spawn,	   SHCMD("st -e ssh -i ~/.ssh/homeserver_key felipe@homeserver -t tmux a -t weechat") },
-	{ MODKEY,		        XK_w,                      spawn,	   SHCMD("st -e nvim ~/Documents/notes/index.md") },
-	{ MODKEY|ShiftMask,		XK_w,                      spawn,	   SHCMD("st -e wiki-finder") },
-	{ MODKEY,		        XK_F1,                     spawn,	   SHCMD("sshfs-manager phone ~/Documents/remote-devices/phone /storage/emulated/0/ 'Phone SSHFS'") },
-	{ MODKEY,		        XK_F2,                     spawn,	   SHCMD("sshfs-manager homeserver ~/Documents/remote-devices/homeserver / 'Homeserver SSHFS'") },
-	{ MODKEY,		        XK_F3,                     spawn,	   SHCMD("sshfs-manager vps ~/Documents/remote-devices/vps /home/felipe 'VPS SSHFS'") },
-	{ MODKEY|ShiftMask,		XK_i,                      spawn,	   SHCMD("/opt/KeepassXC/KeePassXC-2.5.4-x86_64.AppImage") },
-	{ MODKEY|ShiftMask,		XK_b,                      spawn,	   SHCMD("blogenv") },
-	{ MODKEY|ShiftMask,		XK_x,                      spawn,	   SHCMD("slock") },
+	{ MODKEY,		                    XK_u,                      spawn,	         SHCMD("emojilist") },
+	{ MODKEY,		                    XK_y,                      spawn,	         SHCMD("st -e neomutt") },
+	{ MODKEY,		                    XK_g,                      spawn,	         SHCMD("st -e vifmrun") },
+	{ MODKEY,		                    XK_n,                      spawn,	         SHCMD("st -e ncmpcpp") },
+	{ MODKEY,		                    XK_v,                      spawn,	         SHCMD("st -f 'Inconsolata Nerd Font:style=Regular:pixelsize=18:antialias=true:autohint=true' -e calcurse") },
+	{ MODKEY,		                    XK_c,                      spawn,	         SHCMD("st -e ssh -i ~/.ssh/homeserver_key felipe@homeserver -t tmux a -t weechat") },
+	{ MODKEY,		                    XK_w,                      spawn,	         SHCMD("st -e nvim ~/Documents/notes/index.md") },
+	{ MODKEY|ShiftMask,		          XK_w,                      spawn,	         SHCMD("st -e wiki-finder") },
+	{ MODKEY,		                    XK_F1,                     spawn,	         SHCMD("sshfs-manager phone /media/phone /storage/emulated/0/ 'Phone SSHFS'") },
+	{ MODKEY,		                    XK_F2,                     spawn,	         SHCMD("sshfs-manager homeserver /media/homeserver / 'Homeserver SSHFS'") },
+	{ MODKEY,		                    XK_F3,                     spawn,	         SHCMD("sshfs-manager vps /media/vps /home/felipe 'VPS SSHFS'") },
+	{ MODKEY,		                    XK_F9,                     spawn,	         SHCMD("headphone-bluetooth connect") },
+	{ MODKEY,		                    XK_F10,                    spawn,	         SHCMD("headphone-bluetooth disconnect") },
+	{ MODKEY|ShiftMask,		          XK_i,                      spawn,	         SHCMD("/usr/local/bin/keepassxc") },
+	{ MODKEY|ShiftMask,		          XK_b,                      spawn,	         SHCMD("blogenv") },
+	{ MODKEY|ShiftMask,		          XK_x,                      spawn,	         SHCMD("slock") },
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
 	TAGKEYS(                        XK_3,                      2)
