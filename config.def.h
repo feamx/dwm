@@ -5,6 +5,8 @@
 static const unsigned int borderpx  = 2;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 
+static const Gap default_gap        = {.isgap = 1, .realgap = 10, .gappx = 10};
+
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 
@@ -96,6 +98,10 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_period,                 tagmon,         {.i = +1 } },
 	{ ControlMask|Mod1Mask,         XK_l,                      shiftview,      {.i = +1 } },
 	{ ControlMask|Mod1Mask,         XK_h,                      shiftview,      {.i = -1 } },
+	{ MODKEY,                       XK_minus,                  setgaps,        {.i = -5 } },
+	{ MODKEY,                       XK_equal,                  setgaps,        {.i = +5 } },
+	{ MODKEY|ShiftMask,             XK_minus,                  setgaps,        {.i = GAP_RESET } },
+	{ MODKEY|ShiftMask,             XK_equal,                  setgaps,        {.i = GAP_TOGGLE} },
 	{ 0,                            XK_Print,                  spawn,          SHCMD("import png:- | xclip -selection clipboard -t image/png") },
 	{ ShiftMask,                    XK_Print,                  spawn,          SHCMD("import ~/Images/screenshots/$(date +%Y-%m-%d-%H:%M:%S).png") },
 	{ ControlMask,                  XK_Print,                  spawn,          SHCMD("printupload") },
