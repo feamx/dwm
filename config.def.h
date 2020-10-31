@@ -35,10 +35,12 @@ static const Rule rules[] = {
 	 *	WM_CLASS(STRING) = instance, class
 	 *	WM_NAME(STRING) = title
 	 */
-	/* class                                     instance    title       tags mask     isfloating   monitor */
-	{ "Chromium-browser-ungoogled-chromium",     NULL,       NULL,       1,            0,           -1 },
-	{ "KeePassXC",                               NULL,       NULL,       1 << 6,       1,           -1 },
-	{ "Telegram",                                NULL,       NULL,       1 << 7,       0,           -1 },
+	/* class                                     instance    title                 tags mask     isfloating   monitor */
+	{ "Chromium-browser-chromium",               NULL,       NULL,                 1,            0,           -1 },
+	{ "jetbrains-studio",                        NULL,       NULL,                 1 << 4,       1,           -1 },
+	{ "KeePassXC",                               NULL,       NULL,                 1 << 6,       1,           -1 },
+	{ "Telegram",                                NULL,       NULL,                 1 << 7,       0,           -1 },
+	{ "Telegram",                                NULL,       "Media viewer",       1 << 7,       1,           -1 },
 };
 
 /* layout(s) */
