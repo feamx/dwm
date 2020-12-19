@@ -116,7 +116,7 @@ static Key keys[] = {
 	{ 0,                            XF86XK_AudioPlay,          spawn,          SHCMD("mpc toggle | pkill -RTMIN+10 dwmblocks") },
 	{ MODKEY,		                    XK_u,                      spawn,	         SHCMD("emojilist") },
 	{ MODKEY,		                    XK_y,                      spawn,	         SHCMD("st -e neomutt") },
-	{ MODKEY,		                    XK_g,                      spawn,	         SHCMD("st -e vifmrun") },
+	{ MODKEY,		                    XK_g,                      spawn,	         SHCMD("st -e nnn") },
 	{ MODKEY,		                    XK_n,                      spawn,	         SHCMD("st -e ncmpcpp") },
 	{ MODKEY,		                    XK_v,                      spawn,	         SHCMD("st -f 'Inconsolata Nerd Font:style=Regular:pixelsize=18:antialias=true:autohint=true' -e calcurse") },
 	{ MODKEY,		                    XK_c,                      spawn,	         SHCMD("st -e ssh -i ~/.ssh/homeserver_key felipe@homeserver -t tmux a -t weechat") },
