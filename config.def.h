@@ -35,14 +35,16 @@ static const Rule rules[] = {
 	 *	WM_CLASS(STRING) = instance, class
 	 *	WM_NAME(STRING) = title
 	 */
-	/* class                                     instance    title                 tags mask     isfloating   monitor */
-	{ "Firefox",                                 NULL,       NULL,                 1,            0,           -1 },
-	{ "Chromium-browser-chromium",               NULL,       NULL,                 1 << 8,       0,           -1 },
-	{ "st-256color",                             NULL,       NULL,                 1 << 1,       0,           -1 },
-	{ "jetbrains-studio",                        NULL,       NULL,                 1 << 4,       1,           -1 },
-	{ "KeePassXC",                               NULL,       NULL,                 1 << 6,       1,           -1 },
-	{ "Telegram",                                NULL,       NULL,                 1 << 7,       0,           -1 },
-	{ "Telegram",                                NULL,       "Media viewer",       1 << 7,       1,           -1 },
+	/* class                                     instance           title                               tags mask     isfloating   monitor */
+	{ "Firefox",                                 NULL,              NULL,                               1,            0,           -1 },
+	{ "st-256color",                             NULL,              NULL,                               1 << 1,       0,           -1 },
+	{ "jetbrains-studio",                        NULL,              NULL,                               1 << 2,       1,           -1 },
+	{ "tweetdeck-nativefier-4d2c61",             NULL,              NULL,                               1 << 5,       0,           -1 },
+	{ "KeePassXC",                               NULL,              NULL,                               1 << 6,       1,           -1 },
+	{ "Telegram",                                NULL,              NULL,                               1 << 7,       0,           -1 },
+	{ "Telegram",                                NULL,              "Media viewer",                     1 << 7,       1,           -1 },
+	{ "slack-nativefier-c07cef",                 NULL,              NULL,                               1 << 8,       0,           -1 },
+	{ "whatsappweb-nativefier-d40211",           NULL,              NULL,                               1 << 8,       0,           -1 },
 };
 
 /* layout(s) */
