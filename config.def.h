@@ -39,12 +39,14 @@ static const Rule rules[] = {
 	{ "Firefox",                                 NULL,              NULL,                               1,            0,           -1 },
 	{ "st-256color",                             NULL,              NULL,                               1 << 1,       0,           -1 },
 	{ "jetbrains-studio",                        NULL,              NULL,                               1 << 2,       1,           -1 },
+	{ "Soffice",                                 NULL,              NULL,                               1 << 2,       0,           -1 },
 	{ "tweetdeck-nativefier-4d2c61",             NULL,              NULL,                               1 << 5,       0,           -1 },
 	{ "KeePassXC",                               NULL,              NULL,                               1 << 6,       1,           -1 },
 	{ "Telegram",                                NULL,              NULL,                               1 << 7,       0,           -1 },
 	{ "Telegram",                                NULL,              "Media viewer",                     1 << 7,       1,           -1 },
 	{ "slack-nativefier-c07cef",                 NULL,              NULL,                               1 << 8,       0,           -1 },
 	{ "whatsappweb-nativefier-d40211",           NULL,              NULL,                               1 << 8,       0,           -1 },
+	{ "Anki",																		 NULL,              NULL,																1 << 3,       1,           -1 },
 };
 
 /* layout(s) */
